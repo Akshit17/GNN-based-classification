@@ -9,8 +9,11 @@ Common Task 2:  https://github.com/Akshit17/GNN-based-classification
 Specific Task n: *add link to specific task*
 
 ---
-## Quark/Gluon classification
+## Quark/Gluon jet classification
 
+Quark/Gluon jet classification problem involves distinguishing between jets that are initiated by quarks and those that are initiated by gluons. This problem is important for understanding the properties of the strong force and for improving our understanding of particle physics. 
+
+For this task Graph Neural Network (GNN)  were used to classify the jets. Specifically, a GraphSAGE model, which is capable of aggregating information from the local neighborhood of each node in the graph. GraphSAGE is computationally efficient due to its use of neighborhood aggregation and is also able to handle noisy and missing data by aggregating information from neighboring nodes. It has demonstrated state-of-the-art performance on a variety of graph-related tasks which suggested it maybe a strong choice for q/g jet classification as well.
 
 
 ---
@@ -19,17 +22,17 @@ Specific Task n: *add link to specific task*
 Each image is 125x125 consisting of three channels Track, ECAL and HCAL respectively.
 
 #### Combined channels image sample :-
-![Combined channels sample 1](?raw=true)
+![Combined channels sample 1](./assets/Sample_1_VIRIDIS.PNG?raw=true)
 
 #### Point cloud visualization :-
-![Point cloud for sample 1](?raw=true)
+<img src="./assets/point_cloud.PNG" alt="drawing" style="width:450px;"/>
 
 Note :- For visualization purposes Tracks, ECAL, HCAL channels have z = 0,1,2 respectively. However when training 2D surface would be used i.e z=0 for all channels
 
 #### Point cloud to graph representation :-
  * Extracted the non-zero pixels from each channel of the image using a mask.
  * Each image is essentially transformed into a set of nodes, where each node represents a non-zero pixel in the image. 
- * To form the edges between nodes k-nearest neighbor graph was constructed, with k=10. Each node will connected to its k-nearest neighbors.
+ * To form the edges between nodes k-nearest neighbor graph was constructed, with k=10, 4 and 2 respectively. Each node will connected to its k-nearest neighbors.
  * Node features, labels and the adjacency matrix returned by `kneighbors_graph` function from the `sklearn.neighbors` were used to create PyTorch Geometric `Data` objects that could be used as inputs later for the GraphSAGE model.
 
 
@@ -53,7 +56,7 @@ GraphLevelGNN(
 ```
 Hyperparameters :- `optimizer : Adam`, `learning rate : 1e-3`
 
-For training the model pytorch lighning was used as wrapper 
+For training the model Pytorch Lightning was used as wrapper for easy-to-use and flexible interface for defining and training the model without needing to worry about low-level implementation details.
 
 #### Performance :-
 
@@ -67,8 +70,12 @@ For training the model pytorch lighning was used as wrapper
 
 ## Discussion
 
+*  Differences in accuracy between the different values of `k` are relatively small, indicating that the chosen model architecture is not very sensitive to changes in the value of `k`.  (`k` is the number of nearest neighbors for each node)
 
+* As GraphSAGE works by aggregating node features from its neighbors and generating embeddings for each node it is only able to understand the local neighborhood of each node, which may not capture the full structure of the graph. 
 
+* Though it seems to be performing well achieving an accuracy of around 71%, alternate GNN models may also be used such as Graph Attention Networks (GATs) and Graph Convolutional Networks (GCNs) which might help addressing this issue by incorporating information from distant nodes as well. These alternate models would be susceptable to issues relating to scalability, choice of `k` and other hyperparameters.
 
+* As GraphSAGE can be applied to large-scale graphs and is computationally efficient due to its use of neighborhood aggregation it will be well-suited if scalability is a concern. Therefore, trade-off between accuracy and computational efficiency will need to be considered when choosing a GNN model for the particular task.
 
 
