@@ -6,7 +6,9 @@ Common Task 1: https://github.com/Akshit17/Variational-Autoencoder-for-Quark-Glu
 
 Common Task 2:  https://github.com/Akshit17/GNN-based-classification
 
-Specific Task n: *add link to specific task*
+Specific Task 2: https://github.com/Akshit17/Diffusion-model-for-Quark-Gluon-Jet-images
+
+Applying for :- “Diffusion Models for Fast Detector Simulation” project
 
 ---
 ## Quark/Gluon jet classification
