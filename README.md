@@ -15,7 +15,7 @@ Applying for :- **“Diffusion Models for Fast Detector Simulation”** and **"L
 
 Quark/Gluon jet classification problem involves distinguishing between jets that are initiated by quarks and those that are initiated by gluons. This problem is important for understanding the properties of the strong force and for improving our understanding of particle physics. 
 
-For this task Graph Neural Network (GNN)  were used to classify the jets. Specifically, a GraphSAGE model, which is capable of aggregating information from the local neighborhood of each node in the graph. GraphSAGE is computationally efficient due to its use of neighborhood aggregation and is also able to handle noisy and missing data by aggregating information from neighboring nodes. It has demonstrated state-of-the-art performance on a variety of graph-related tasks which suggested it maybe a strong choice for q/g jet classification as well.
+For this task Graph Neural Network (GNN)  were used to classify the jets. Specifically, a GraphSAGE model, which is capable of aggregating information from the local neighborhood of each node in the graph. GraphSAGE is computationally efficient due to its use of neighborhood aggregation because of which it is also able to handle noisy and missing data by message passing information from neighboring nodes. It has demonstrated state-of-the-art performance on a variety of graph-related tasks which suggested it maybe a strong choice for q/g jet classification as well.
 
 
 ---
